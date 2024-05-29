@@ -31,7 +31,7 @@ async function handleGenreClick(genreId) {
   movies.slice(0, 8).forEach((movie) => {
     const imgUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
     result1 += `
-            <li>
+            <li id = "movie-${movie.id}">
                 <div class="imgWrap">
                     <span class="topIcon"><i class="fa-regular fa-heart"></i></span>
                     <img src="${imgUrl}" alt="Movie Poster" id="moviePoster" />
@@ -40,9 +40,7 @@ async function handleGenreClick(genreId) {
                     <div class="textTop">
                         <h2 id="movieName">${movie.title}</h2>
                         <div class="textDown">
-                            <p><i class="fa-solid fa-star"></i><span id="rating">${movie.vote_average.toFixed(
-                              1
-                            )}</span></p>
+                            <p><i class="fa-solid fa-star"></i><span id="rating">${movie.vote_average.toFixed(1)}</span></p>
                         </div>
                     </div>
                 </div>
@@ -58,9 +56,9 @@ async function handleGenreClick(genreId) {
   });
 
 <<<<<<< HEAD:js/genre.js
-    movieContent.innerHTML = result1;
-    mainScreen.innerHTML = result2;
-    console.log("장르구역")
+  movieContent.innerHTML = result1;
+  mainScreen.innerHTML = result2;
+  console.log("장르구역")
 =======
   movieContent.innerHTML = result1;
   mainScreen.innerHTML = result2;
