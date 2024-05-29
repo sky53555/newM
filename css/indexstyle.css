@@ -221,6 +221,7 @@ button {
 }
 .red {
   color: #e4687f;
+  /* background-color: #e4687f; */
 }
 
 /* wishlistItems 내의 li 요소 스타일링 */
@@ -318,7 +319,7 @@ button {
 }
 .textTop .topIcon {
   font-size: 2rem;
-  color: #e4687f;
+  color: #white;
   justify-self: end;
   cursor: pointer;
 }
