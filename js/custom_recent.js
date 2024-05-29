@@ -1,32 +1,32 @@
-let recent = document.querySelector("#recent")
+let recent = document.querySelector("#recent");
+let genreName = document.querySelector("#genre");
+let box = [];
 
+let currentPage = 1;
+let moviesFetched = 0;
+const moviesPerPage = 8;
 
-
-//내용
-async function RecentGenre() {
+async function getMovies(page) {
     const response = await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=ko-KR&page=1`
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=ko-KR&page=${page}`
     );
-
     const data = await response.json();
-    console.log(data);
+    return data.results;
+}
 
-    const boxArray = Array.from(box);
-    console.log(boxArray);
-
+function renderMovies(movies, container) {
     const movieContent = document.querySelector("#movieContent");
+    const mainScreen = document.querySelector(".main");
 
-    let result = "";
+    let result1 = "";
+    let result2 = "";
 
-    data.results.forEach((movie, index) => {
-        const listItem = boxArray[index];
+    movies.forEach((movie, index) => {
         const imgUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-        const vote = movie.vote_average.toFixed(1)
-        const title = movie.title
+        const vote = movie.vote_average.toFixed(1);
+        const title = movie.title;
 
-
-
-        result += `
+        result1 += `
             <li>
                 <div class="imgWrap">
                     <span class="topIcon"><i class="fa-regular fa-heart"></i></span>
@@ -42,14 +42,31 @@ async function RecentGenre() {
                 </div>
             </li>
         `;
+
+        result2 = `
+                <div class="mainImg">
+                    <img src="${imgUrl}" alt="" id="mainPoster" />
+                    <h3 class="mainText">${title}</h3>
+                </div>
+            `;
+
     });
-    movieContent.innerHTML = result;
+    movieContent.innerHTML = result1;
+    mainScreen.innerHTML = result2;
+
+    // container.insertAdjacentHTML('beforeend', result1);
+    genreName.textContent = "최신 영화";
+    console.log("최신구역")
 }
 
-recent.addEventListener("click", () => {
-    RecentGenre();
+(async function () {
+    const movies = await getMovies(currentPage);
+    renderMovies(movies.slice(0, moviesPerPage), document.getElementById('movieContent'));
+    moviesFetched += moviesPerPage;
+})();
+
+recent.addEventListener("click", async () => {
+    const movies = await getMovies(currentPage);
+    renderMovies(movies.slice(0, moviesPerPage), document.getElementById('movieContent'));
     genreName.textContent = "최신 영화";
 });
-
-
-
