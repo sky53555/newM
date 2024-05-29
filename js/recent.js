@@ -1,3 +1,5 @@
+let api_key = "e771164d62de82fa2de8fde83d339c37";
+
 let recent = document.querySelector("#recent");
 let genreName = document.querySelector("#genre");
 let box = [];

@@ -8,8 +8,6 @@ let genreName = document.querySelector("#genre"),
     fantasy = document.querySelector("#fantasy"),
     drama = document.querySelector("#drama");
 
-// 기본
-
 // 영화 정보 가져오기
 async function getMoviesByGenre(genreId) {
     const response = await fetch(
@@ -59,6 +57,7 @@ async function handleGenreClick(genreId) {
 
     movieContent.innerHTML = result1;
     mainScreen.innerHTML = result2;
+    console.log("장르구역")
 }
 
 // 로맨스 클릭 이벤트
