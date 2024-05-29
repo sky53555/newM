@@ -51,5 +51,5 @@ recent.addEventListener("click", () => {
     genreName.textContent = "최신 영화";
 });
 
-
+g
 
