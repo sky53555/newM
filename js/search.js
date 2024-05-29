@@ -79,7 +79,7 @@ function displaySearchResults(results, query) {
       ${results
         .map(
           (movie) => `
-          <li id = "movie-${movie.id}"> 
+          <li id = "movie-${movie.id}" data-id="${movie.id}"> 
           <div class="imgWrap">
           <img src="${
             movie.poster_path !== null
@@ -92,7 +92,7 @@ function displaySearchResults(results, query) {
               <div id="movieCon">
               <h2 id="movieName">${movie.title}</h2>
               <span class="topIcon">
-              <i class="fa-regular fa-heart"></i>
+              <i class="fa-solid fa-heart" onclick="toggleLike(this)"></i>
               </span>
               </div>
               <div class="textDown">
@@ -137,7 +137,7 @@ function displayAdditionalResults(results) {
   ulElement.innerHTML += results
     .map(
       (movie) => `
-    <li>
+    <li id="movie-${movie.id}" data-id="${movie.id}">
       <div class="imgWrap">
         <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${
         movie.title
@@ -146,7 +146,7 @@ function displayAdditionalResults(results) {
       <div class="textWrap">
         <div class="textTop">
           <h2 id="movieName">${movie.title}</h2>
-          <span class="topIcon"><i class="fa-regular fa-heart"></i></span>
+          <span class="topIcon"><i class="fa-solid fa-heart" onclick="toggleLike(this)"></i></span>
           <div class="textDown">
             <p><i class="fa-solid fa-star"></i><span id="rating">${movie.vote_average.toFixed(
               1
