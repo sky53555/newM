@@ -4,10 +4,14 @@ const searchResult = document.querySelector("#searchResult");
 let searchForm = document.querySelector(".search");
 let searchInput = document.querySelector(".searchTex");
 let allResults = []; // 모든 검색 결과를 저장할 배열
+
+//인덱스 일때
 const korea = document.querySelector("#section1");
 const abroad = document.querySelector("#section2");
 const swiperContainer = document.querySelector(".swiper-container");
 const swiperSlides = document.querySelectorAll(".swiper-slide");
+
+//sub일때
 
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault(); // 폼의 기본 동작 방지
